@@ -60,6 +60,23 @@ compile 'com.justkiddingbaby:slidemenu:最新版本'
 |void|closeRightSlide()|关闭右滑菜单|
 |boolean|isRightSlideOpen()|右滑菜单是否打开|
 
+## 使用方式
+#### 布局中使用
+```xml
+ <com.jkb.slidemenu.SlideMenuLayout
+        android:id="@+id/mainSlideMenu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        app:slideMode="both">
+        <include layout="@layout/content_menu_left" />
+        <include layout="@layout/content_menu_right" />
+        <include layout="@layout/content_menu_content" />
+ </com.jkb.slidemenu.SlideMenuLayout>
+ ```
+ 注意！！！SlideMenuLayout中布局的顺序是侧滑菜单布局在前，主体内容在后，这个主要是为了防止右滑菜单重叠问题。
+ 要是slideMode为both则必须要有三个子视图，否则会抛出异常。
+ 
 ## 发布历史
 #### v1.0.0(2017/6/8)
 1、发布SlideMenuLayout，处理各个场景下的滑动冲突。  
