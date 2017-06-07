@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#bd3e27</color>
+    <color name="colorPrimaryDark">#702314</color>
+    <color name="colorAccent">#bd3e27</color>
+
+    <color name="clarity">#00FFFFFF</color>
+    <color name="general">#e7e7e7</color>
+    <color name="background">#fdfdfe</color>
+    <color name="line">#333333</color>
+    <color name="hint">#999999</color>
+
+    <!--纯色调-->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gravy">#C0C0C0</color>
+    <color name="red">#FF0000</color>
+    <color name="blue">#2b8ad6</color>
+    <color name="gravy_deep2">#26292b</color>
+
+    <!--混合色-->
+    <color name="gravy_deep">#666666</color>
+    <color name="gravy_light">#999999</color>
+    <color name="yellow_deep">#fbba39</color>
+    <color name="blue_light">#83b6f7</color>
+
+    <!--带透明度的色调-->
+    <color name="black_10">#1a000000</color>
+    <color name="black_35">#46000000</color>
+    <color name="white_35">#46FFFFFF</color>
+    <color name="white_20">#1EFFFFFF</color>
+    <color name="white_60">#99ffffff</color>
+    <color name="gravy_30">#55c0c0c0</color>
+
+</resources>

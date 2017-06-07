@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--侧滑菜单的属性-->
+    <declare-styleable name="SlideMenuLayout">
+        <attr name="slideMode" format="enum">
+            <enum name="left" value="1001" />
+            <enum name="right" value="1002" />
+            <enum name="both" value="1003" />
+            <enum name="none" value="1004" />
+        </attr>
+        <attr name="slidePadding" format="dimension" />
+    </declare-styleable>
+</resources>
