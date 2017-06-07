@@ -38,27 +38,27 @@ compile 'com.justkiddingbaby:slidemenu:最新版本'
 ## 属性说明
 属性|说明|值
 ---|---|---
-|[slideMode](\slidemenu\src\main\res\values\attrs.xml)|滑动模式|left right both none|
-|[slidePadding](\slidemenu\src\main\res\values\attrs.xml)|滑动菜单打开时候主视图预留边界|dimension|
-|[slideTime](\slidemenu\src\main\res\values\attrs.xml)|滑动菜单单开的时间，默认800ms|integer|
+|[slideMode](/slidemenu/src/main/res/values/attrs.xml)|滑动模式|left right both none|
+|[slidePadding](/slidemenu/src/main/res/values/attrs.xml)|滑动菜单打开时候主视图预留边界|dimension|
+|[slideTime](/slidemenu/src/main/res/values/attrs.xml)|滑动菜单单开的时间，默认800ms|integer|
 
 ## 方法说明
 返回值|方法|说明
 ---|---|---
-|void|[setSlideMode(int slideMode)](\slidemenu\src\main\java\com\jkb\slidemenu\SlideMenuAction.java)|设置滑动模式|
-|void|[setSlidePadding(int slidePadding)](\slidemenu\src\main\java\com\jkb\slidemenu\SlideMenuAction.java)|设置滑动边界|
-|void|[setSlideTime(int slideTime)](\slidemenu\src\main\java\com\jkb\slidemenu\SlideMenuAction.java)|设置滑动菜单打开的时间|
-|View|[getSlideLeftView()](\slidemenu\src\main\java\com\jkb\slidemenu\SlideMenuAction.java)|返回左滑菜单|
-|View|[getSlideRightView()](\slidemenu\src\main\java\com\jkb\slidemenu\SlideMenuAction.java)|返回右滑菜单|
-|View|[getSlideContentView()](\slidemenu\src\main\java\com\jkb\slidemenu\SlideMenuAction.java)|返回主视图|
-|void|[toggleLeftSlide()](\slidemenu\src\main\java\com\jkb\slidemenu\SlideMenuAction.java)|打开/关闭左滑菜单|
-|void|[openLeftSlide()](\slidemenu\src\main\java\com\jkb\slidemenu\SlideMenuAction.java)|打开左滑菜单|
-|void|[closeLeftSlide()](\slidemenu\src\main\java\com\jkb\slidemenu\SlideMenuAction.java)|关闭左滑此单|
-|boolean|[isLeftSlideOpen()](\slidemenu\src\main\java\com\jkb\slidemenu\SlideMenuAction.java)|左滑菜单是否打开|
-|void|[toggleRightSlide()](\slidemenu\src\main\java\com\jkb\slidemenu\SlideMenuAction.java)|打开/关闭右滑菜单|
-|void|[openRightSlide()](\slidemenu\src\main\java\com\jkb\slidemenu\SlideMenuAction.java)|打开右滑菜单|
-|void|[closeRightSlide()](\slidemenu\src\main\java\com\jkb\slidemenu\SlideMenuAction.java)|关闭右滑菜单|
-|boolean|[isRightSlideOpen()](\slidemenu\src\main\java\com\jkb\slidemenu\SlideMenuAction.java)|右滑菜单是否打开|
+|void|[setSlideMode(int slideMode)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|设置滑动模式|
+|void|[setSlidePadding(int slidePadding)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|设置滑动边界|
+|void|[setSlideTime(int slideTime)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|设置滑动菜单打开的时间|
+|View|[getSlideLeftView()](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|返回左滑菜单|
+|View|[getSlideRightView()](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|返回右滑菜单|
+|View|[getSlideContentView()](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|返回主视图|
+|void|[toggleLeftSlide()](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|打开/关闭左滑菜单|
+|void|[openLeftSlide()](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|打开左滑菜单|
+|void|[closeLeftSlide()](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|关闭左滑此单|
+|boolean|[isLeftSlideOpen()](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|左滑菜单是否打开|
+|void|[toggleRightSlide()](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|打开/关闭右滑菜单|
+|void|[openRightSlide()](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|打开右滑菜单|
+|void|[closeRightSlide()](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|关闭右滑菜单|
+|boolean|[isRightSlideOpen()](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|右滑菜单是否打开|
 
 ## 使用方式
 #### 布局中使用
@@ -74,7 +74,7 @@ compile 'com.justkiddingbaby:slidemenu:最新版本'
         <include layout="@layout/content_menu_content" />
  </com.jkb.slidemenu.SlideMenuLayout>
  ```
- 注意！！！**[SlideMenuLayout](\slidemenu\src\main\java\com\jkb\slidemenu\SlideMenuLayout.java)中布局的顺序是侧滑菜单布局在前，主体内容在后**，这个主要是为了防止右滑菜单重叠问题。
+ 注意！！！**[SlideMenuLayout](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuLayout.java)中布局的顺序是侧滑菜单布局在前，主体内容在后**，这个主要是为了防止右滑菜单重叠问题。
  要是slideMode为both则必须要有三个子视图，否则会抛出异常。
  
 ## 发布历史
