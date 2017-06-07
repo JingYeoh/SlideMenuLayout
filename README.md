@@ -1,10 +1,36 @@
 # SlideMenuLayout
 ## 简介
 一个支持左右滑动并带有视差滑动效果的安卓滑动菜单控件。
+## 最新版本
+模块|slideMenuLayout
+---|---
+最新版本|![Download](https://api.bintray.com/packages/jkb/maven/slidemenu/images/download.svg)
 ### 功能介绍
 1、支持滑动方向的配置  
 2、直接作为控件使用  
 3、处理各个场景下的滑动冲突  
+
+## 集成
+#### Maven集成
+```xml
+<dependency>
+  <groupId>com.justkiddingbaby</groupId>
+  <artifactId>slidemenu</artifactId>
+  <version>最新版本</version>
+  <type>pom</type>
+</dependency>
+```
+#### JCenter集成
+第一步 在项目build.gradle中添加
+```gradle
+repositories {
+    jcenter()
+}
+```
+第一步 在module的build.gradle中添加
+```gradle
+compile 'com.justkiddingbaby:slidemenu:最新版本'
+```
 
 ## 属性说明
 属性|说明|值
