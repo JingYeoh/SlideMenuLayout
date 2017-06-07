@@ -74,7 +74,7 @@ compile 'com.justkiddingbaby:slidemenu:最新版本'
         <include layout="@layout/content_menu_content" />
  </com.jkb.slidemenu.SlideMenuLayout>
  ```
- 注意！！！SlideMenuLayout中布局的顺序是侧滑菜单布局在前，主体内容在后，这个主要是为了防止右滑菜单重叠问题。
+ 注意！！！**SlideMenuLayout中布局的顺序是侧滑菜单布局在前，主体内容在后**，这个主要是为了防止右滑菜单重叠问题。
  要是slideMode为both则必须要有三个子视图，否则会抛出异常。
  
 ## 发布历史
