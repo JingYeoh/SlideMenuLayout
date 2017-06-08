@@ -5,17 +5,20 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.WindowManager;
 
 import com.jkb.slidemenu.SlideMenuLayout;
+import com.jkb.slidemenulayout.adapter.ContentAdapter;
+import com.jkb.slidemenulayout.adapter.SlideLeftAdapter;
+import com.jkb.slidemenulayout.adapter.SlideRightMenuAdapter;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     //ui
     private SlideMenuLayout slideMenuLayout;
-    private ViewPager viewPager;
-    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +34,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initView() {
         slideMenuLayout = (SlideMenuLayout) findViewById(R.id.mainSlideMenu);
 
-        tabLayout = (TabLayout) findViewById(R.id.fmr_tab);
-        viewPager = (ViewPager) findViewById(R.id.fmr_vp);
-
-        tabLayout.addTab(tabLayout.newTab());
-        tabLayout.addTab(tabLayout.newTab());
-
-        viewPager.setAdapter(new SlideRightMenuAdapter(getSupportFragmentManager()));
-        tabLayout.setupWithViewPager(viewPager);
+        //right
+        TabLayout slideTabLayout = (TabLayout) findViewById(R.id.fmr_tab);
+        ViewPager slideViewPager = (ViewPager) findViewById(R.id.fmr_vp);
+        slideTabLayout.addTab(slideTabLayout.newTab());
+        slideTabLayout.addTab(slideTabLayout.newTab());
+        slideViewPager.setAdapter(new SlideRightMenuAdapter(getSupportFragmentManager()));
+        slideTabLayout.setupWithViewPager(slideViewPager);
+        //left
+        RecyclerView leftRecyclerView = (RecyclerView) findViewById(R.id.cml_rv);
+        leftRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        SlideLeftAdapter slideLeftAdapter = new SlideLeftAdapter(this);
+        leftRecyclerView.setAdapter(slideLeftAdapter);
+        //content
+        TabLayout contentTabLayout = (TabLayout) findViewById(R.id.am_tab);
+        ViewPager contentViewPager = (ViewPager) findViewById(R.id.am_vp);
+        contentTabLayout.addTab(contentTabLayout.newTab());
+        contentTabLayout.addTab(contentTabLayout.newTab());
+        contentViewPager.setAdapter(new ContentAdapter(getSupportFragmentManager()));
+        contentTabLayout.setupWithViewPager(contentViewPager);
 
         findViewById(R.id.fm_leftMenu).setOnClickListener(this);
         findViewById(R.id.fm_rightMenu).setOnClickListener(this);

@@ -21,6 +21,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     //attrs
     private int mSlideMode;
     private int mSlidePadding;
+    private int mSlideTime;
     //data
     private int screenWidth;
     private int screenHeight;
@@ -35,7 +36,6 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     private int mDx;//滑动的距离，在手指抬起时清空
     private boolean mTriggerSlideLeft;
     private boolean mTriggerSlideRight;
-    private static final int TIME_SLIDE = 700;
 
     public SlideMenuLayout(Context context) {
         this(context, null);
@@ -61,6 +61,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
         TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.SlideMenuLayout);
         mSlideMode = ta.getInteger(R.styleable.SlideMenuLayout_slideMode, SLIDE_MODE_NONE);
         mSlidePadding = (int) ta.getDimension(R.styleable.SlideMenuLayout_slidePadding, screenWidth / 4);
+        mSlideTime = ta.getInteger(R.styleable.SlideMenuLayout_slideTime, 700);
         ta.recycle();
     }
 
@@ -146,7 +147,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
             if (mLeftView != null) {
                 int leftTranslationX = 2 * (mSlideWidth + getScrollX()) / 3;
                 //有菜单打开或者关闭的时候回恢复原位
-                if (getScrollX() == 0 || getScrollX() == mSlideWidth || getScrollX() == -mSlideWidth) {
+                if (getScrollX() == 0 || getScrollX() >= mSlideWidth || getScrollX() <= -mSlideWidth) {
                     leftTranslationX = 0;
                 }
                 mLeftView.setTranslationX(leftTranslationX);
@@ -181,7 +182,18 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
                     } else if (mTriggerSlideRight) {
                         intercept = x < mSlidePadding;
                     } else {
-                        intercept = true;
+                        //当手指在边缘地区的时候拦截事件
+                        //以下判断条件主要为了区分边界滑动
+                        if (mSlideMode == SLIDE_MODE_LEFT && deltaX > 0) {//左滑
+                            intercept = x <= mSlidePadding / 2;
+                        } else if (mSlideMode == SLIDE_MODE_RIGHT && deltaX < 0) {//右滑
+                            intercept = x >= mSlideWidth - mSlidePadding / 2;
+                        } else if (mSlideMode == SLIDE_MODE_LEFT_RIGHT) {//双向滑动
+                            if (deltaX > 0) intercept = x <= mSlidePadding / 2;
+                            if (deltaX < 0) intercept = x >= mSlideWidth - mSlidePadding / 2;
+                        } else {
+                            intercept = false;
+                        }
                     }
                 } else {//纵向滑动
                     intercept = false;
@@ -217,6 +229,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
                 mDx = dx;
                 break;
             case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
                 if (mDx > 0) {//右滑
                     inertiaScrollRight();
                 } else {
@@ -255,7 +268,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
                 } else {
                     closeRightSlide();
                 }
-            } else if (mTriggerSlideLeft) {
+            } else if (mTriggerSlideLeft || getScrollX() < 0) {
                 if (-getScrollX() <= mSlideWidth / 2) {
                     closeLeftSlide();
                 } else {
@@ -292,7 +305,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
                 } else {
                     closeLeftSlide();
                 }
-            } else if (mTriggerSlideRight) {
+            } else if (mTriggerSlideRight || getScrollX() > 0) {
                 if (getScrollX() <= mSlideWidth / 2) {
                     closeRightSlide();
                 } else {
@@ -314,7 +327,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
             }
             mRightView.setTranslationX(2 * (-mSlideWidth + getScrollX()) / 3);
         } else if (mSlideMode == SLIDE_MODE_LEFT) {
-            //右滑菜单未打开，不做操作
+            //左滑菜单未打开，不做操作
             if (!mTriggerSlideLeft || getScrollX() - dx >= 0) {
                 closeLeftSlide();
                 return;
@@ -368,7 +381,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     private void smoothScrollTo(int destX, int destY) {
         int scrollX = getScrollX();
         int deltaX = destX - scrollX;
-        float time = deltaX * 1.0f / (mSlideWidth * 1.0f / TIME_SLIDE);
+        float time = deltaX * 1.0f / (mSlideWidth * 1.0f / mSlideTime);
         time = Math.abs(time);
         mScroller.startScroll(scrollX, 0, deltaX, destY, (int) time);
         invalidate();

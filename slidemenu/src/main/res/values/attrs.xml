@@ -9,5 +9,6 @@
             <enum name="none" value="1004" />
         </attr>
         <attr name="slidePadding" format="dimension" />
+        <attr name="slideTime" format="integer" />
     </declare-styleable>
 </resources>

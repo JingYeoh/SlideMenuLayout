@@ -13,12 +13,9 @@
         android:background="@color/white"
         app:slideMode="both">
 
-        <include layout="@layout/content_menu_right" />
+        <include layout="@layout/content_menu_left" />
 
-        <FrameLayout
-            android:id="@+id/rightSlide"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        <include layout="@layout/content_menu_right" />
 
         <LinearLayout
             android:id="@+id/fm_slide_content"
@@ -67,6 +64,26 @@
                         android:src="@drawable/ic_action_conversations" />
                 </RelativeLayout>
             </android.support.v7.widget.Toolbar>
+
+            <android.support.design.widget.TabLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/am_tab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/clarity"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="@color/colorPrimary"
+                app:tabIndicatorHeight="2.5dp"
+                app:tabMode="fixed"
+                app:tabSelectedTextColor="@color/colorPrimary"
+                app:tabTextColor="@color/gravy" />
+
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/am_vp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/gravy_30" />
         </LinearLayout>
 
     </com.jkb.slidemenu.SlideMenuLayout>

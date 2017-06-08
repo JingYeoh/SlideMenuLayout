@@ -1,8 +1,11 @@
-package com.jkb.slidemenulayout;
+package com.jkb.slidemenulayout.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.jkb.slidemenulayout.ui.ChatFragment;
+import com.jkb.slidemenulayout.ui.FriendFragment;
 
 /**
  * 右滑菜单适配器
@@ -12,7 +15,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 public class SlideRightMenuAdapter extends FragmentPagerAdapter {
 
     private String[] menuNames = new String[]{
-            "聊天", "好友"
+            "chat", "friend"
     };
 
     public SlideRightMenuAdapter(FragmentManager fm) {

@@ -1,4 +1,4 @@
-package com.jkb.slidemenulayout;
+package com.jkb.slidemenulayout.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.jkb.slidemenulayout.R;
 
 /**
  * 好友列表
