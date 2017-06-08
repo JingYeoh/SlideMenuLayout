@@ -9,7 +9,7 @@ publish {
     groupId = 'com.justkiddingbaby'
     artifactId = 'slidemenu'
     publishVersion = appVerName
-    desc = 'An Android slide menu that support left slide and right slide.'
+    desc = 'An Android slide menu layout that support left slide and right slide.'
     website = 'https://github.com/YangJing96/SlideMenuLayout'
 }
 
@@ -29,7 +29,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    lintOptions { abortOnError false }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {

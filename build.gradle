@@ -25,6 +25,15 @@ allprojects {
     }
 }
 
+ext {
+    minSdkVersion = 15
+    targetSdkVersion = 25
+    compileSdkVersion = 25
+    buildToolsVersion = "25.0.2"
+    sourceCompatibilityVersion = JavaVersion.VERSION_1_7
+    targetCompatibilityVersion = JavaVersion.VERSION_1_7
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
