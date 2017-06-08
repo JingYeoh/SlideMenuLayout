@@ -42,6 +42,13 @@ public interface SlideMenuAction {
     void setSlidePadding(int slidePadding);
 
     /**
+     * 设置滑动菜单打开的时间
+     *
+     * @param slideTime 单位ms
+     */
+    void setSlideTime(int slideTime);
+
+    /**
      * 返回左侧滑视图
      *
      * @return {@link View}

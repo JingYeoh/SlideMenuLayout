@@ -476,6 +476,11 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     }
 
     @Override
+    public void setSlideTime(int slideTime) {
+        mSlideTime = slideTime;
+    }
+
+    @Override
     public View getSlideLeftView() {
         return mLeftView;
     }
