@@ -1,22 +1,24 @@
 # SlideMenuLayout
 ## Introduction
-An android slide menu that supports left and right swipes and slides with parallax.(一个支持左右滑动并带有视差滑动效果的安卓滑动菜单控件[中文版入口](README-CN.md))   
+An android slide menu that supports left and right swipes and slides with parallax.   
+一个支持左右滑动并带有视差滑动效果的安卓滑动菜单控件。([中文版入口](README-CN.md))  
 [![Platform](https://img.shields.io/badge/platform-android-green.svg)](http://developer.android.com/index.html)
 <img src="https://img.shields.io/badge/license-Apache 2.0-green.svg?style=flat">
 [![API](https://img.shields.io/badge/API-12%2B-green.svg?style=flat)](https://android-arsenal.com/api?level=11)
+
+## Demo
+Encapsulate the sliding nesting of different scenarios  
+<img src="/gif/demo.gif" width="280px"/>
 
 ### Features
 - [x] **support for sliding direction configuration**  
 - [x] **it can be used as view**  
 - [x] **Handle the sliding conflicts in each scenarios**  
 ## Version
-name|slideMenuLayout
+name|SlideMenuLayout
 ---|---
 latest|![Download](https://api.bintray.com/packages/jkb/maven/slidemenu/images/download.svg)
 
-## Demo
-  **Encapsulate the sliding nesting of different scenarios**  
-<img src="/gif/demo.gif" width="280px"/>
 ## Configure
 #### Maven
 ```xml
@@ -78,7 +80,7 @@ return|function name|instruction
         <include layout="@layout/content_menu_content" />
  </com.jkb.slidemenu.SlideMenuLayout>
  ```
- **Mind！！！when you use [SlideMenuLayout](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuLayout.java)in layout,it can only host three child view,and the left slide menu view and the right slide menu view must add before the content view (for prevent the right slide menu from overlapping).**
+ **Mind！！！when you use [SlideMenuLayout](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuLayout.java) in layout,it can only host three child view,and the left slide menu view and the right slide menu view must add before the content view (for prevent the right slide menu from overlapping).**
  if slideMode is both then the SlideViewLayout must host three child views.
  
 ## Release history

@@ -4,6 +4,11 @@
 [![Platform](https://img.shields.io/badge/platform-android-green.svg)](http://developer.android.com/index.html)
 <img src="https://img.shields.io/badge/license-Apache 2.0-green.svg?style=flat">
 [![API](https://img.shields.io/badge/API-12%2B-green.svg?style=flat)](https://android-arsenal.com/api?level=11)
+
+## 演示
+  封装不同场景下的滑动嵌套  
+<img src="/gif/demo.gif" width="280px"/>
+
 ### 功能介绍
 - [x] **支持滑动方向的配置**  
 - [x] **直接作为控件使用**  
@@ -13,9 +18,6 @@
 ---|---
 最新版本|![Download](https://api.bintray.com/packages/jkb/maven/slidemenu/images/download.svg)
 
-## 演示
-  封装不同场景下的滑动嵌套  
-<img src="/gif/demo.gif" width="280px"/>
 ## 集成
 #### Maven集成
 ```xml
