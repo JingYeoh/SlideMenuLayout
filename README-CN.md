@@ -9,7 +9,7 @@
   封装不同场景下的滑动嵌套  
 <img src="/gif/demo.gif" width="280px"/>
 
-### 功能介绍
+## 特性
 - [x] **支持滑动方向的配置**  
 - [x] **直接作为控件使用**  
 - [x] **处理各个场景下的滑动冲突**  
@@ -79,8 +79,9 @@ compile 'com.justkiddingbaby:slidemenu:最新版本'
         <include layout="@layout/content_menu_content" />
  </com.jkb.slidemenu.SlideMenuLayout>
  ```
- **注意！！！[SlideMenuLayout](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuLayout.java)中布局的顺序是侧滑菜单布局在前，主体内容在后(为了防止右滑菜单重叠问题)。**
- 要是slideMode为both则必须要有三个子视图，否则会抛出异常。
+ #### 注意
+ **[SlideMenuLayout](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuLayout.java)中布局的顺序是侧滑菜单布局在前，主体内容在后(为了防止右滑菜单重叠问题)。**   
+ 要是slideMode为both时，则SlideMenuLayout必须要有三个子视图，否则会抛出异常。
  
 ## 发布历史
 #### v1.0.0(2017/6/8)
