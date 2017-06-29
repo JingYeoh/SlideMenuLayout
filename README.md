@@ -85,7 +85,7 @@ return|function name|instruction
  **when you use [SlideMenuLayout](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuLayout.java) in layout,it can only host three child view,and the left slide menu view and the right slide menu view must add before the content view (for prevent the right slide menu from overlapping).**   
  if slideMode is both then the SlideViewLayout must host three child views.
  
-## Release history\
+## Release history
 #### v1.0.1(2017/6/29)
 1、alter minSdkVersion to SDK 12.  
 #### v1.0.0(2017/6/8)
