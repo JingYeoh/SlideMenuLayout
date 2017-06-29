@@ -4,7 +4,7 @@ An android slide menu that supports left and right swipes and slides with parall
 一个支持左右滑动并带有视差滑动效果的安卓滑动菜单控件。([中文版入口](README-CN.md))  
 [![Platform](https://img.shields.io/badge/platform-android-green.svg)](http://developer.android.com/index.html)
 <img src="https://img.shields.io/badge/license-Apache 2.0-green.svg?style=flat">
-[![API](https://img.shields.io/badge/API-12%2B-green.svg?style=flat)](https://android-arsenal.com/api?level=11)
+[![SDK](https://img.shields.io/badge/API-12%2B-green.svg?style=flat)](https://android-arsenal.com/api?level=11)
 
 ## Demo
 Encapsulate the sliding nesting of different scenarios.  
@@ -14,6 +14,7 @@ Encapsulate the sliding nesting of different scenarios.
 - [x] **support for sliding direction configuration**  
 - [x] **it can be used as view**  
 - [x] **Handle the sliding conflicts in each scenarios**  
+
 ## Version
 name|SlideMenuLayout
 ---|---
@@ -84,7 +85,9 @@ return|function name|instruction
  **when you use [SlideMenuLayout](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuLayout.java) in layout,it can only host three child view,and the left slide menu view and the right slide menu view must add before the content view (for prevent the right slide menu from overlapping).**   
  if slideMode is both then the SlideViewLayout must host three child views.
  
-## Release history
+## Release history\
+#### v1.0.1(2017/6/29)
+1、alter minSdkVersion to SDK 12.  
 #### v1.0.0(2017/6/8)
 1、release SlideMenuLayout，Handle the sliding conflicts in each scenarios.  
 2、Encapsulation demo.

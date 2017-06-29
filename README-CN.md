@@ -3,7 +3,7 @@
 一个支持左右滑动并带有视差滑动效果的安卓滑动菜单控件。   
 [![Platform](https://img.shields.io/badge/platform-android-green.svg)](http://developer.android.com/index.html)
 <img src="https://img.shields.io/badge/license-Apache 2.0-green.svg?style=flat">
-[![API](https://img.shields.io/badge/API-12%2B-green.svg?style=flat)](https://android-arsenal.com/api?level=11)
+[![SDK](https://img.shields.io/badge/API-12%2B-green.svg?style=flat)](https://android-arsenal.com/api?level=11)
 
 ## 演示
   封装不同场景下的滑动嵌套  
@@ -13,6 +13,7 @@
 - [x] **支持滑动方向的配置**  
 - [x] **直接作为控件使用**  
 - [x] **处理各个场景下的滑动冲突**  
+
 ## 最新版本
 模块|slideMenuLayout
 ---|---
@@ -84,6 +85,8 @@ compile 'com.justkiddingbaby:slidemenu:最新版本'
  要是slideMode为both时，则SlideMenuLayout必须要有三个子视图，否则会抛出异常。
  
 ## 发布历史
+#### v1.0.1(2017/6/9)
+1、修改最低版本SDK为12.
 #### v1.0.0(2017/6/8)
 1、发布SlideMenuLayout，处理各个场景下的滑动冲突。  
 2、封装demo。

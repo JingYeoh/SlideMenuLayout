@@ -1,39 +1,45 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
 
-def appVerCode = 1
-def appVerName = "1.0.0"
 
 publish {
-    userOrg = 'jkb'
-    groupId = 'com.justkiddingbaby'
-    artifactId = 'slidemenu'
-    publishVersion = appVerName
-    desc = 'An Android slide menu layout that support left slide and right slide.'
-    website = 'https://github.com/YangJing96/SlideMenuLayout'
+    userOrg = rootProject.ext.slidemenu.userOrg
+    groupId = rootProject.ext.slidemenu.groupId
+    artifactId = rootProject.ext.slidemenu.artifactId
+    publishVersion = rootProject.ext.slidemenu.publishVersion
+    desc = rootProject.ext.slidemenu.desc
+    website = rootProject.ext.slidemenu.website
 }
 
 android {
-    compileSdkVersion Integer.parseInt(COMPILE_SDK_VERSION)
-    buildToolsVersion BUILDTOOLS_VERSION
+
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion Integer.parseInt(MIN_SDK_VERSION)
-        targetSdkVersion Integer.parseInt(TARGET_SDK_VERSION)
-        versionCode appVerCode
-        versionName appVerName
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.slidemenu.publishCode
+        versionName rootProject.ext.slidemenu.publishVersion
     }
+
+    compileOptions {
+        sourceCompatibility rootProject.ext.android.sourceCompatibilityVersion
+        targetCompatibility rootProject.ext.android.targetCompatibilityVersion
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     lintOptions {
         abortOnError false
     }
 }
 
 dependencies {
-    compile "com.android.support:appcompat-v7:${SUPPORT_LIB_VERSION}"
+    compile rootProject.ext.dependencies.appcompatV7
 }
