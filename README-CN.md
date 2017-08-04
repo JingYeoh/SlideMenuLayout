@@ -15,9 +15,9 @@
 - [x] **处理各个场景下的滑动冲突**  
 
 ## 最新版本
-模块|slideMenuLayout
----|---
-最新版本|![Download](https://api.bintray.com/packages/jkb/maven/slidemenu/images/download.svg)
+|模块|slideMenuLayout|
+|---|---|
+|最新版本|![Download](https://api.bintray.com/packages/jkb/maven/slidemenu/images/download.svg)|
 
 ## 集成
 #### Maven集成
@@ -42,15 +42,15 @@ compile 'com.justkiddingbaby:slidemenu:最新版本'
 ```
 
 ## 属性说明
-属性|说明|值
----|---|---
+|属性|说明|值|
+|---|---|---|
 |[slideMode](/slidemenu/src/main/res/values/attrs.xml)|滑动模式|left right both none|
 |[slidePadding](/slidemenu/src/main/res/values/attrs.xml)|滑动菜单打开时候主视图预留边界|dimension|
 |[slideTime](/slidemenu/src/main/res/values/attrs.xml)|滑动菜单单开的时间，默认800ms|integer|
 
 ## 方法说明
-返回值|方法|说明
----|---|---
+|返回值|方法|说明|
+|---|---|---|
 |void|[setSlideMode(int slideMode)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|设置滑动模式|
 |void|[setSlidePadding(int slidePadding)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|设置滑动边界|
 |void|[setSlideTime(int slideTime)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|设置滑动菜单打开的时间|
@@ -90,3 +90,8 @@ compile 'com.justkiddingbaby:slidemenu:最新版本'
 #### v1.0.0(2017/6/8)
 1、发布SlideMenuLayout，处理各个场景下的滑动冲突。  
 2、封装demo。
+
+## License
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/License_icon-mit-88x31-2.svg/128px-License_icon-mit-88x31-2.svg.png)
+
+RollingLayout遵循MIT开源协议. 浏览[LICENSE](https://opensource.org/licenses/MIT)查看更多信息.

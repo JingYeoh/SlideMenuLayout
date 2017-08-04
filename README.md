@@ -16,9 +16,9 @@ Encapsulate the sliding nesting of different scenarios.
 - [x] **Handle the sliding conflicts in each scenarios**  
 
 ## Version
-name|SlideMenuLayout
----|---
-latest|![Download](https://api.bintray.com/packages/jkb/maven/slidemenu/images/download.svg)
+|name|SlideMenuLayout|
+|---|---|
+|latest|![Download](https://api.bintray.com/packages/jkb/maven/slidemenu/images/download.svg)|
 
 ## Configure
 #### Maven
@@ -43,15 +43,15 @@ compile 'com.justkiddingbaby:slidemenu:the latest version'
 ```
 
 ## Attributes instruction
-attribute|instruction|value
----|---|---
+|attribute|instruction|value|
+|---|---|---|
 |[slideMode](/slidemenu/src/main/res/values/attrs.xml)|sliding mode|left right both none|
 |[slidePadding](/slidemenu/src/main/res/values/attrs.xml)|the content view padding when slide menu is opened|dimension|
 |[slideTime](/slidemenu/src/main/res/values/attrs.xml)|the time of slide menu open,the default value is 800ms|integer|
 
 ## Function instruction
-return|function name|instruction
----|---|---
+|return|function name|instruction|
+|---|---|---|
 |void|[setSlideMode(int slideMode)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|set slide mode|
 |void|[setSlidePadding(int slidePadding)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|set slide content padding when slide menu is open|
 |void|[setSlideTime(int slideTime)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|set the time of opening slide menu|
@@ -91,3 +91,8 @@ return|function name|instruction
 #### v1.0.0(2017/6/8)
 1、release SlideMenuLayout，Handle the sliding conflicts in each scenarios.  
 2、Encapsulation demo.
+
+## License
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/License_icon-mit-88x31-2.svg/128px-License_icon-mit-88x31-2.svg.png)
+
+RollingLayout is available under the MIT license. See the [LICENSE](https://opensource.org/licenses/MIT) file for more info.
