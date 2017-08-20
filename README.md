@@ -12,11 +12,11 @@ Encapsulate the sliding nesting of different scenarios.
 
 ## Features
 - [x] **Support for sliding direction configuration**
-- [x] **Can be used as ``ViewGroup``**  
+- [x] **Can be used as ``ViewGroup``**
 - [x] **Handle the sliding conflicts in each scenarios**
-- []  **Option to click on content view to close menu when it's opening**
-- []  **Option to dim the content view automatically**
-- []  **Option to toggle the parallax effect**
+- [ ] **Option to click on content view to close menu when it's opening**
+- [ ] **Option to dim the content view automatically**
+- [ ] **Option to toggle the parallax effect**
 
 ## Version
 |name|SlideMenuLayout|
