@@ -13,5 +13,6 @@
         <attr name="parallax" format="boolean" />
         <attr name="contentAlpha" format="float" />
         <attr name="contentShadowColor" format="color" />
+        <attr name="contentToggle" format="boolean" />
     </declare-styleable>
 </resources>

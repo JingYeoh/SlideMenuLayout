@@ -9,6 +9,7 @@ import android.support.annotation.ColorRes;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     private boolean mParallax;
     private float mContentAlpha;
     private int mContentShadowColor;
+    private boolean mContentToggle;
     //data
     private int screenWidth;
     private int screenHeight;
@@ -87,6 +89,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
         mContentAlpha = ta.getFloat(R.styleable.SlideMenuLayout_contentAlpha, 0.5f);
         mContentShadowColor = ta.getColor(R.styleable.SlideMenuLayout_contentShadowColor,
                 Color.parseColor("#000000"));
+        mContentToggle = ta.getBoolean(R.styleable.SlideMenuLayout_contentToggle, false);
         ta.recycle();
     }
 
@@ -240,6 +243,8 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
                 break;
             case MotionEvent.ACTION_UP:
                 intercept = false;
+                //点击ContentView后关闭侧滑菜单
+                touchContentViewToCloseSlide();
                 break;
         }
         mLastX = x;
@@ -278,6 +283,24 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
                 break;
         }
         return true;
+    }
+
+    /**
+     * 点击ContentView后关闭侧滑菜单
+     */
+    private void touchContentViewToCloseSlide() {
+        if (!mContentToggle) return;
+        if (Math.abs(getScrollX()) < mSlideWidth) return;
+        int dX = getScrollX();
+        if (dX < 0) {//左滑菜单打开
+            if (mLastX > mSlideWidth) {
+                closeLeftSlide();
+            }
+        } else if (dX > 0) {
+            if (mLastX < (mContentWidth - mSlideWidth)) {
+                closeRightSlide();
+            }
+        }
     }
 
     /**
@@ -582,6 +605,11 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
         if (mContentShadowPaint == null) initContentShadowPaint();
         mContentShadowPaint.setColor(ContextCompat.getColor(getContext(), mContentShadowColor));
         postInvalidate();
+    }
+
+    @Override
+    public void setContentToggle(boolean contentToggle) {
+        mContentToggle = contentToggle;
     }
 
     @Override

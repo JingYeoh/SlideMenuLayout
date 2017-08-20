@@ -13,7 +13,7 @@
 - [x] **支持滑动方向的配置**  
 - [x] **直接作为控件使用**  
 - [x] **处理各个场景下的滑动冲突**  
-- [ ] **侧滑菜单打开时候点击主体布局关闭侧滑菜单（可配置）**
+- [x] **侧滑菜单打开时候点击主体布局关闭侧滑菜单（可配置）**
 - [x] **侧滑菜单打开/关闭的时候主体布局暗度自动变化（可配置）**
 - [x] **支持滑动视差效果（可配置）**
 
@@ -50,6 +50,10 @@ compile 'com.justkiddingbaby:slidemenu:最新版本'
 |[slideMode](/slidemenu/src/main/res/values/attrs.xml)|滑动模式|left right both none|
 |[slidePadding](/slidemenu/src/main/res/values/attrs.xml)|滑动菜单打开时候主视图预留边界|dimension|
 |[slideTime](/slidemenu/src/main/res/values/attrs.xml)|滑动菜单单开的时间，默认800ms|integer|
+|[parallax](/slidemenu/src/main/res/values/attrs.xml)|是否允許滑动视差效果，默认true|boolean|
+|[contentAlpha](/slidemenu/src/main/res/values/attrs.xml)|设置侧滑菜单打开时候ContentView的阴影透明度（范围0<alpha<=1.0），默认0.5f|float|
+|[contentShadowColor](/slidemenu/src/main/res/values/attrs.xml)|设置侧滑菜单打开时候ContentView的阴影颜色，默认色值#000000|color|
+|[contentToggle](/slidemenu/src/main/res/values/attrs.xml)|设置是否允许侧滑菜单打开时候点击ContentView关闭侧滑菜单，默认false|boolean|
 
 ## 方法说明
 |返回值|方法|说明|
@@ -68,6 +72,10 @@ compile 'com.justkiddingbaby:slidemenu:最新版本'
 |void|[openRightSlide()](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|打开右滑菜单|
 |void|[closeRightSlide()](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|关闭右滑菜单|
 |boolean|[isRightSlideOpen()](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|右滑菜单是否打开|
+|void|[setParallaxSwitch(boolean parallax)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|设置是否允许滑动视差效果|
+|void|[setContentAlpha(float contentAlpha)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|设置在侧滑菜单打开时候的ContentView的透明度，`该值为1.0时表示滑动过程中无阴影`|
+|void|[setContentShadowColor(int color)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|设置ContentView在滑动过程中的阴影颜色|
+|void|[setContentToggle(boolean contentToggle)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|设置ContentView是否在侧滑菜单打开时候点击关闭侧滑菜单.默认false|
 
 ## 使用方式
 #### 布局中使用

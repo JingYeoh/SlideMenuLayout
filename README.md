@@ -14,7 +14,7 @@ Encapsulate the sliding nesting of different scenarios.
 - [x] **Support for sliding direction configuration**
 - [x] **Can be used as ``ViewGroup``**
 - [x] **Handle the sliding conflicts in each scenarios**
-- [ ] **Option to click on content view to close menu when it's opening**
+- [x] **Option to click on content view to close menu when it's opening**
 - [x] **Option to dim the content view automatically**
 - [x] **Option to toggle the parallax effect**
 
@@ -51,6 +51,10 @@ compile 'com.justkiddingbaby:slidemenu:the latest version'
 |[slideMode](/slidemenu/src/main/res/values/attrs.xml)|sliding mode|left right both none|
 |[slidePadding](/slidemenu/src/main/res/values/attrs.xml)|the content view padding when slide menu is opened|dimension|
 |[slideTime](/slidemenu/src/main/res/values/attrs.xml)|the time of slide menu open,the default value is 800ms|integer|
+|[parallax](/slidemenu/src/main/res/values/attrs.xml)|option to toggle the parallax effect,default is true|boolean|
+|[contentAlpha](/slidemenu/src/main/res/values/attrs.xml)|the alpha of shadow for `ContentView` when menu is opened.（0<alpha<=1.0），default is 0.5f|float|
+|[contentShadowColor](/slidemenu/src/main/res/values/attrs.xml)|the color of shadow for `ContentView` when menu is sliding，default is `#000000`|color|
+|[contentToggle](/slidemenu/src/main/res/values/attrs.xml)|option to click on content view to close menu when it's opening，default is false|boolean|
 
 ## Function instruction
 |return|function name|instruction|
@@ -69,6 +73,10 @@ compile 'com.justkiddingbaby:slidemenu:the latest version'
 |void|[openRightSlide()](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|open right slide menu|
 |void|[closeRightSlide()](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|close right slide menu|
 |boolean|[isRightSlideOpen()](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|return the result of right slide menu is open|
+|void|[setParallaxSwitch(boolean parallax)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|set is able to toggle the parallax effect|
+|void|[setContentAlpha(float contentAlpha)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|set the alpha of shadow for `ContentView` when menu is opened.，`1.0f means the effect is not abled`|
+|void|[setContentShadowColor(int color)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|set the color of shadow for `ContentView` when menu is sliding,default is `#000000`|
+|void|[setContentToggle(boolean contentToggle)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|option to click on content view to close menu when it's opening.default is false|
 
 ## Usage
 #### use in the layout

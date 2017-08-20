@@ -73,6 +73,13 @@ public interface SlideMenuAction {
     void setContentShadowColor(@ColorRes int color);
 
     /**
+     * 设置ContentView是否在侧滑菜单打开时候点击关闭侧滑菜单.
+     *
+     * @param contentToggle Default:false
+     */
+    void setContentToggle(boolean contentToggle);
+
+    /**
      * 返回左侧滑视图
      *
      * @return {@link View}

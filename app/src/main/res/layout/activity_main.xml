@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:background="@color/white"
         app:contentAlpha="0.5"
+        app:contentToggle="true"
         app:parallax="false"
         app:slideMode="both">
 
