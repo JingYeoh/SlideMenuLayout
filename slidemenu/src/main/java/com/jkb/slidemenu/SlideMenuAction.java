@@ -30,7 +30,8 @@ public interface SlideMenuAction {
     /**
      * 设置Slide模式
      *
-     * @param slideMode {@link SlideMenuAction}中的三种模式
+     * @param slideMode {@link #SLIDE_MODE_LEFT},{@link #SLIDE_MODE_LEFT_RIGHT},
+     *                  {@link #SLIDE_MODE_RIGHT},{@link #SLIDE_MODE_NONE}
      */
     void setSlideMode(int slideMode);
 
