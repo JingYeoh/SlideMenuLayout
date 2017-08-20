@@ -2,6 +2,11 @@ package com.jkb.slidemenu;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.support.annotation.ColorRes;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
@@ -23,6 +28,8 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     private int mSlidePadding;
     private int mSlideTime;
     private boolean mParallax;
+    private float mContentAlpha;
+    private int mContentShadowColor;
     //data
     private int screenWidth;
     private int screenHeight;
@@ -37,6 +44,8 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     private int mDx;//滑动的距离，在手指抬起时清空
     private boolean mTriggerSlideLeft;
     private boolean mTriggerSlideRight;
+    //ui
+    private Paint mContentShadowPaint;
 
     public SlideMenuLayout(Context context) {
         this(context, null);
@@ -52,7 +61,18 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
         screenWidth = getScreenWidth(context);
         screenHeight = getScreenHeight(context);
         initAttrs(attrs);//初始化属性
+        initContentShadowPaint();
         mScroller = new Scroller(context);
+
+    }
+
+    /**
+     * 初始化ContentView的阴影画笔
+     */
+    private void initContentShadowPaint() {
+        mContentShadowPaint = new Paint();
+        mContentShadowPaint.setColor(mContentShadowColor);//给画笔设置透明度变化的颜色
+        mContentShadowPaint.setStyle(Paint.Style.FILL);//设置画笔类型填充
     }
 
     /**
@@ -64,6 +84,9 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
         mSlidePadding = (int) ta.getDimension(R.styleable.SlideMenuLayout_slidePadding, screenWidth / 4);
         mSlideTime = ta.getInteger(R.styleable.SlideMenuLayout_slideTime, 700);
         mParallax = ta.getBoolean(R.styleable.SlideMenuLayout_parallax, true);
+        mContentAlpha = ta.getFloat(R.styleable.SlideMenuLayout_contentAlpha, 0.5f);
+        mContentShadowColor = ta.getColor(R.styleable.SlideMenuLayout_contentShadowColor,
+                Color.parseColor("#000000"));
         ta.recycle();
     }
 
@@ -129,6 +152,29 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     }
 
     @Override
+    protected boolean drawChild(Canvas canvas, View child, long drawingTime) {
+        boolean result = super.drawChild(canvas, child, drawingTime);
+        if (child == mContentView) {
+            int rX = Math.abs(getScrollX());
+            int alpha = 0;
+            if (rX == 0) {
+                alpha = 0;
+            } else if (rX >= mSlideWidth) {
+                alpha = (int) ((1.0f - mContentAlpha) * 255);
+            } else {
+                alpha = (int) (Math.abs((1.0f - mContentAlpha) / mSlideWidth) * rX * 255);
+            }
+            alpha = alpha < 0 ? 255 : alpha;
+            alpha = alpha > 255 ? 255 : alpha;
+
+            mContentShadowPaint.setAlpha(alpha);
+            canvas.drawRect(mContentView.getLeft(), mContentView.getTop(), mContentView.getRight(),
+                    mContentView.getBottom(), mContentShadowPaint);//画出阴影
+        }
+        return result;
+    }
+
+    @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         if (mLeftView != null) {
             mLeftView.layout(-mSlideWidth, 0, 0, mContentHeight);
@@ -153,6 +199,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
                 rightMenuParallax();
             }
             postInvalidate();
+            changeContentViewAlpha();
         }
     }
 
@@ -335,6 +382,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
             rightMenuParallax();
         }
         scrollBy(-dx, 0);
+        changeContentViewAlpha();
     }
 
     /**
@@ -365,6 +413,26 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
             rightMenuParallax();
         }
         scrollBy(-dx, 0);
+        changeContentViewAlpha();
+    }
+
+    /**
+     * 改变ContentView的透明度
+     */
+    private void changeContentViewAlpha() {
+        /*int rX = Math.abs(getScrollX());
+        float alpha = 1.0f;
+        if (rX == 0) {
+            alpha = 1.0f;
+        } else if (rX == mSlideWidth) {
+            alpha = mContentAlpha;
+        } else {
+            alpha = Math.abs(1.0f - ((1.0f - mContentAlpha) / mSlideWidth) * rX);
+        }
+        alpha = alpha < 0.1f ? 0.1f : alpha;
+        alpha = alpha > 1.0f ? 1.0f : alpha;
+        mContentView.setAlpha(alpha);*/
+        postInvalidate();
     }
 
     /**
@@ -501,6 +569,19 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     @Override
     public void setParallaxSwitch(boolean parallax) {
         mParallax = parallax;
+    }
+
+    @Override
+    public void setContentAlpha(float contentAlpha) {
+        mContentAlpha = contentAlpha;
+    }
+
+    @Override
+    public void setContentShadowColor(@ColorRes int color) {
+        mContentShadowColor = color;
+        if (mContentShadowPaint == null) initContentShadowPaint();
+        mContentShadowPaint.setColor(ContextCompat.getColor(getContext(), mContentShadowColor));
+        postInvalidate();
     }
 
     @Override

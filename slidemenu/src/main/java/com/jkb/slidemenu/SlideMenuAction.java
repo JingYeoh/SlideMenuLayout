@@ -1,5 +1,6 @@
 package com.jkb.slidemenu;
 
+import android.support.annotation.ColorRes;
 import android.view.View;
 
 /**
@@ -28,7 +29,7 @@ public interface SlideMenuAction {
     int SLIDE_MODE_NONE = 1004;
 
     /**
-     * 设置Slide模式
+     * set slide mode.(设置Slide模式)
      *
      * @param slideMode {@link #SLIDE_MODE_LEFT},{@link #SLIDE_MODE_LEFT_RIGHT},
      *                  {@link #SLIDE_MODE_RIGHT},{@link #SLIDE_MODE_NONE}
@@ -55,6 +56,21 @@ public interface SlideMenuAction {
      * @param parallax 视差效果开关，Default:true
      */
     void setParallaxSwitch(boolean parallax);
+
+    /**
+     * 设置在侧滑菜单打开时候的ContentView的透明度，该值会在侧滑的时候不断变化，从1.0变化至设置的值.
+     *
+     * @param contentAlpha 0<contentAlpha<=1.0，值为1.0时表示侧滑时候ContentView无透明度变化.
+     *                     Default:0.5
+     */
+    void setContentAlpha(float contentAlpha);
+
+    /**
+     * 设置ContentView在滑动过程中的阴影颜色
+     *
+     * @param color 颜色，默认色值：#000000
+     */
+    void setContentShadowColor(@ColorRes int color);
 
     /**
      * 返回左侧滑视图

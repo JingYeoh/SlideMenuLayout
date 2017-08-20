@@ -11,5 +11,7 @@
         <attr name="slidePadding" format="dimension" />
         <attr name="slideTime" format="integer" />
         <attr name="parallax" format="boolean" />
+        <attr name="contentAlpha" format="float" />
+        <attr name="contentShadowColor" format="color" />
     </declare-styleable>
 </resources>
