@@ -10,5 +10,6 @@
         </attr>
         <attr name="slidePadding" format="dimension" />
         <attr name="slideTime" format="integer" />
+        <attr name="parallax" format="boolean" />
     </declare-styleable>
 </resources>

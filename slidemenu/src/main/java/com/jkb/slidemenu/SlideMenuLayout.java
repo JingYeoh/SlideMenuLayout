@@ -22,6 +22,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     private int mSlideMode;
     private int mSlidePadding;
     private int mSlideTime;
+    private boolean mParallax;
     //data
     private int screenWidth;
     private int screenHeight;
@@ -62,6 +63,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
         mSlideMode = ta.getInteger(R.styleable.SlideMenuLayout_slideMode, SLIDE_MODE_NONE);
         mSlidePadding = (int) ta.getDimension(R.styleable.SlideMenuLayout_slidePadding, screenWidth / 4);
         mSlideTime = ta.getInteger(R.styleable.SlideMenuLayout_slideTime, 700);
+        mParallax = ta.getBoolean(R.styleable.SlideMenuLayout_parallax, true);
         ta.recycle();
     }
 
@@ -145,20 +147,10 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
         if (mScroller.computeScrollOffset()) {
             scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
             if (mLeftView != null) {
-                int leftTranslationX = 2 * (mSlideWidth + getScrollX()) / 3;
-                //有菜单打开或者关闭的时候回恢复原位
-                if (getScrollX() == 0 || getScrollX() >= mSlideWidth || getScrollX() <= -mSlideWidth) {
-                    leftTranslationX = 0;
-                }
-                mLeftView.setTranslationX(leftTranslationX);
+                leftMenuParallax();
             }
             if (mRightView != null) {
-                int rightTranslationX = 2 * (-mSlideWidth + getScrollX()) / 3;
-                //有菜单打开或者关闭的时候回恢复原位X
-                if (getScrollX() == 0 || getScrollX() == mSlideWidth || getScrollX() == -mSlideWidth) {
-                    rightTranslationX = 0;
-                }
-                mRightView.setTranslationX(rightTranslationX);
+                rightMenuParallax();
             }
             postInvalidate();
         }
@@ -325,22 +317,22 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
                 openRightSlide();
                 return;
             }
-            mRightView.setTranslationX(2 * (-mSlideWidth + getScrollX()) / 3);
+            rightMenuParallax();
         } else if (mSlideMode == SLIDE_MODE_LEFT) {
             //左滑菜单未打开，不做操作
             if (!mTriggerSlideLeft || getScrollX() - dx >= 0) {
                 closeLeftSlide();
                 return;
             }
-            mLeftView.setTranslationX(2 * (mSlideWidth + getScrollX()) / 3);
+            leftMenuParallax();
         } else if (mSlideMode == SLIDE_MODE_LEFT_RIGHT) {
             //右滑菜单已经打开，不做操作
             if (mTriggerSlideRight || getScrollX() - dx >= mSlideWidth) {
                 openRightSlide();
                 return;
             }
-            mLeftView.setTranslationX(2 * (mSlideWidth + getScrollX()) / 3);
-            mRightView.setTranslationX(2 * (-mSlideWidth + getScrollX()) / 3);
+            leftMenuParallax();
+            rightMenuParallax();
         }
         scrollBy(-dx, 0);
     }
@@ -355,24 +347,50 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
                 openLeftSlide();
                 return;
             }
-            mLeftView.setTranslationX(2 * (mSlideWidth + getScrollX()) / 3);
+            leftMenuParallax();
         } else if (mSlideMode == SLIDE_MODE_RIGHT) {
             //右滑菜单未打开，不做操作
             if (!mTriggerSlideRight || getScrollX() - dx <= 0) {
                 closeRightSlide();
                 return;
             }
-            mRightView.setTranslationX(2 * (-mSlideWidth + getScrollX()) / 3);
+            rightMenuParallax();
         } else if (mSlideMode == SLIDE_MODE_LEFT_RIGHT) {
             //左滑菜单已经打开，不做操作
             if (mTriggerSlideLeft || getScrollX() - dx <= -mSlideWidth) {
                 openLeftSlide();
                 return;
             }
-            mLeftView.setTranslationX(2 * (mSlideWidth + getScrollX()) / 3);
-            mRightView.setTranslationX(2 * (-mSlideWidth + getScrollX()) / 3);
+            leftMenuParallax();
+            rightMenuParallax();
         }
         scrollBy(-dx, 0);
+    }
+
+    /**
+     * 右滑菜单的视差效果
+     */
+    private void rightMenuParallax() {
+        if (!mParallax) return;
+        int rightTranslationX = 2 * (-mSlideWidth + getScrollX()) / 3;
+        //有菜单打开或者关闭的时候回恢复原位X
+        if (getScrollX() == 0 || getScrollX() == mSlideWidth || getScrollX() == -mSlideWidth) {
+            rightTranslationX = 0;
+        }
+        mRightView.setTranslationX(rightTranslationX);
+    }
+
+    /**
+     * 左滑菜单的视差效果
+     */
+    private void leftMenuParallax() {
+        if (!mParallax) return;
+        int leftTranslationX = 2 * (mSlideWidth + getScrollX()) / 3;
+        //有菜单打开或者关闭的时候回恢复原位
+        if (getScrollX() == 0 || getScrollX() >= mSlideWidth || getScrollX() <= -mSlideWidth) {
+            leftTranslationX = 0;
+        }
+        mLeftView.setTranslationX(leftTranslationX);
     }
 
     /**
@@ -478,6 +496,11 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     @Override
     public void setSlideTime(int slideTime) {
         mSlideTime = slideTime;
+    }
+
+    @Override
+    public void setParallaxSwitch(boolean parallax) {
+        mParallax = parallax;
     }
 
     @Override

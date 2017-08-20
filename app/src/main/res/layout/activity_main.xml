@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
+        app:parallax="false"
         app:slideMode="both">
 
         <include layout="@layout/content_menu_left" />

@@ -50,6 +50,13 @@ public interface SlideMenuAction {
     void setSlideTime(int slideTime);
 
     /**
+     * 设置视差效果开关
+     *
+     * @param parallax 视差效果开关，Default:true
+     */
+    void setParallaxSwitch(boolean parallax);
+
+    /**
      * 返回左侧滑视图
      *
      * @return {@link View}
