@@ -98,7 +98,7 @@ compile 'com.justkiddingbaby:slidemenu:the latest version'
  
 ## Release history
 #### v1.2.1(2017/9/18)
-1、intercept the touch action of `content view` when `contentToggle` attribute is true.
+1、intercept the touch action of `content view` when `contentToggle` attribute's value is true.
 #### v1.2.0(2017/8/20)
 1、add feature:Option to click on content view to close menu when it's opening.
 2、add feature:Option to dim the content view automatically.

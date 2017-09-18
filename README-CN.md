@@ -97,7 +97,7 @@ compile 'com.justkiddingbaby:slidemenu:最新版本'
  
 ## 发布历史
 #### v1.2.1(2017/9/18)
-1、当`contentToggle`属性的值为`true`时，拦截`content view`的touch事件.  
+1、当`contentToggle`属性的值为`true`时，拦截`content view`的touch事件.
 #### v1.2.0(2017/8/20)
 1、添加特性:侧滑菜单打开时候点击主体布局关闭侧滑菜单（可配置）.
 2、添加特性:侧滑菜单打开/关闭的时候主体布局暗度自动变化（可配置）.
