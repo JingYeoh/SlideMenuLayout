@@ -9,7 +9,6 @@ import android.support.annotation.ColorRes;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,6 +65,26 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
         initContentShadowPaint();
         mScroller = new Scroller(context);
 
+    }
+
+    /**
+     * 获取手机屏幕的高度
+     */
+    static int getScreenHeight(Context context) {
+        DisplayMetrics metrics = new DisplayMetrics();
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        wm.getDefaultDisplay().getMetrics(metrics);
+        return metrics.heightPixels;
+    }
+
+    /**
+     * 获取手机屏幕的宽度
+     */
+    static int getScreenWidth(Context context) {
+        DisplayMetrics metrics = new DisplayMetrics();
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        wm.getDefaultDisplay().getMetrics(metrics);
+        return metrics.widthPixels;
     }
 
     /**
@@ -242,9 +261,9 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                intercept = false;
+//                intercept = false;
                 //点击ContentView后关闭侧滑菜单
-                touchContentViewToCloseSlide();
+                intercept = touchContentViewToCloseSlide();
                 break;
         }
         mLastX = x;
@@ -288,19 +307,24 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     /**
      * 点击ContentView后关闭侧滑菜单
      */
-    private void touchContentViewToCloseSlide() {
-        if (!mContentToggle) return;
-        if (Math.abs(getScrollX()) < mSlideWidth) return;
+    private boolean touchContentViewToCloseSlide() {
+        if (!mContentToggle) return false;
+        if (Math.abs(getScrollX()) < mSlideWidth) return false;
         int dX = getScrollX();
         if (dX < 0) {//左滑菜单打开
             if (mLastX > mSlideWidth) {
                 closeLeftSlide();
+            } else {
+                return false;
             }
         } else if (dX > 0) {
             if (mLastX < (mContentWidth - mSlideWidth)) {
                 closeRightSlide();
+            } else {
+                return false;
             }
         }
+        return true;
     }
 
     /**
@@ -532,7 +556,8 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
                     mRightView = getChildAt(0);
                     mContentView = getChildAt(1);
                 } else {
-                    throw new IllegalStateException("SlideMenuLayout must host only three direct child when slideMode " +
+                    throw new IllegalStateException("SlideMenuLayout must host only three direct child when slideMode" +
+                            " " +
                             "is both");
                 }
                 break;
@@ -552,26 +577,6 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
         LayoutParams contentParams = mContentView.getLayoutParams();
         contentParams.width = widthResult;
         contentParams.height = heightResult;
-    }
-
-    /**
-     * 获取手机屏幕的高度
-     */
-    static int getScreenHeight(Context context) {
-        DisplayMetrics metrics = new DisplayMetrics();
-        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        wm.getDefaultDisplay().getMetrics(metrics);
-        return metrics.heightPixels;
-    }
-
-    /**
-     * 获取手机屏幕的宽度
-     */
-    static int getScreenWidth(Context context) {
-        DisplayMetrics metrics = new DisplayMetrics();
-        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        wm.getDefaultDisplay().getMetrics(metrics);
-        return metrics.widthPixels;
     }
 
     @Override

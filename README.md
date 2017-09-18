@@ -97,8 +97,14 @@ compile 'com.justkiddingbaby:slidemenu:the latest version'
  if slideMode is both then the SlideViewLayout must host three child views.
  
 ## Release history
+#### v1.2.1(2017/9/18)
+1、intercept the touch action of `content view` when `contentToggle` attribute is true.
+#### v1.2.0(2017/8/20)
+1、add feature:Option to click on content view to close menu when it's opening.
+2、add feature:Option to dim the content view automatically.
+3、add feature:Option to toggle the parallax effect.
 #### v1.0.1(2017/6/29)
-1、alter minSdkVersion to SDK 12.  
+1、alter minSdkVersion to SDK 12.
 #### v1.0.0(2017/6/8)
 1、release SlideMenuLayout，Handle the sliding conflicts in each scenarios.  
 2、Encapsulation demo.
