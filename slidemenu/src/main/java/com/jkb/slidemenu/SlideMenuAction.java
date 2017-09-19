@@ -1,7 +1,12 @@
 package com.jkb.slidemenu;
 
 import android.support.annotation.ColorRes;
+import android.support.annotation.FloatRange;
+import android.support.annotation.IntDef;
 import android.view.View;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 /**
  * 侧滑菜单的动作
@@ -9,7 +14,6 @@ import android.view.View;
  */
 
 public interface SlideMenuAction {
-
     /**
      * 只支持左侧滑
      */
@@ -22,7 +26,6 @@ public interface SlideMenuAction {
      * 支持左侧滑和右侧滑
      */
     int SLIDE_MODE_LEFT_RIGHT = 1003;
-
     /**
      * 左滑右滑均不支持
      */
@@ -34,7 +37,7 @@ public interface SlideMenuAction {
      * @param slideMode {@link #SLIDE_MODE_LEFT},{@link #SLIDE_MODE_LEFT_RIGHT},
      *                  {@link #SLIDE_MODE_RIGHT},{@link #SLIDE_MODE_NONE}
      */
-    void setSlideMode(int slideMode);
+    void setSlideMode(@SlideMode int slideMode);
 
     /**
      * 设置侧滑菜单打开时候距离主视图的padding
@@ -63,7 +66,7 @@ public interface SlideMenuAction {
      * @param contentAlpha 0<contentAlpha<=1.0，值为1.0时表示侧滑时候ContentView无透明度变化.
      *                     Default:0.5
      */
-    void setContentAlpha(float contentAlpha);
+    void setContentAlpha(@FloatRange(from = 0f, to = 1.0f) float contentAlpha);
 
     /**
      * 设置ContentView在滑动过程中的阴影颜色
@@ -139,4 +142,14 @@ public interface SlideMenuAction {
      * 右侧滑菜单是否打开
      */
     boolean isRightSlideOpen();
+
+    /**
+     * Slide Mode.（滑动模式）
+     *
+     * @hide
+     */
+    @IntDef({SLIDE_MODE_LEFT, SLIDE_MODE_RIGHT, SLIDE_MODE_LEFT_RIGHT, SLIDE_MODE_NONE})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface SlideMode {
+    }
 }

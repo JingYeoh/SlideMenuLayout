@@ -14,7 +14,7 @@
         android:background="@color/white"
         app:contentAlpha="0.5"
         app:contentToggle="true"
-        app:parallax="false"
+        app:parallax="true"
         app:slideMode="both">
 
         <include layout="@layout/content_menu_left"/>

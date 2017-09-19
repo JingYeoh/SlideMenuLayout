@@ -7,7 +7,7 @@
 
 ## 演示
   封装不同场景下的滑动嵌套  
-<img src="/gif/demo.gif" width="280px"/>
+<img src="/gif/demo2.gif" width="280px"/>
 
 ## 特性
 - [x] **支持滑动方向的配置**  

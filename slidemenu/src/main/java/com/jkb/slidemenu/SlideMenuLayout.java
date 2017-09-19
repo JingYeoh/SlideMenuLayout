@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.annotation.ColorRes;
+import android.support.annotation.FloatRange;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -580,7 +581,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     }
 
     @Override
-    public void setSlideMode(int slideMode) {
+    public void setSlideMode(@SlideMode int slideMode) {
         mSlideMode = slideMode;
     }
 
@@ -600,7 +601,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     }
 
     @Override
-    public void setContentAlpha(float contentAlpha) {
+    public void setContentAlpha(@FloatRange(from = 0f, to = 1.0f) float contentAlpha) {
         mContentAlpha = contentAlpha;
     }
 

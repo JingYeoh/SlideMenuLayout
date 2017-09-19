@@ -8,7 +8,7 @@ An android slide menu that supports left and right swipes and slides with parall
 
 ## Demo
 Encapsulate the sliding nesting of different scenarios.  
-<img src="/gif/demo.gif" width="280px"/>
+<img src="/gif/demo2.gif" width="280px"/>
 
 ## Features
 - [x] **Support for sliding direction configuration**
