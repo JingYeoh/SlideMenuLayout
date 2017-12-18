@@ -96,6 +96,8 @@ compile 'com.justkiddingbaby:slidemenu:最新版本'
  要是slideMode为both时，则SlideMenuLayout必须要有三个子视图，否则会抛出异常。
  
 ## 发布历史
+#### v1.2.2(2017/12/18)
+1、修复[issue#5](https://github.com/JustKiddingBaby/SlideMenuLayout/issues/5)
 #### v1.2.1(2017/9/18)
 1、当`contentToggle`属性的值为`true`时，拦截`content view`的touch事件.
 #### v1.2.0(2017/8/20)
@@ -111,4 +113,4 @@ compile 'com.justkiddingbaby:slidemenu:最新版本'
 ## License
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/License_icon-mit-88x31-2.svg/128px-License_icon-mit-88x31-2.svg.png)
 
-RollingLayout遵循MIT开源协议. 浏览[LICENSE](https://opensource.org/licenses/MIT)查看更多信息.
+本框架遵循MIT开源协议. 浏览[LICENSE](https://opensource.org/licenses/MIT)查看更多信息.

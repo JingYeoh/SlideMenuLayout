@@ -97,6 +97,8 @@ compile 'com.justkiddingbaby:slidemenu:the latest version'
  if slideMode is both then the SlideViewLayout must host three child views.
  
 ## Release history
+#### v1.2.2(2017/12/18)
+1、Fix [issue#5](https://github.com/JustKiddingBaby/SlideMenuLayout/issues/5)
 #### v1.2.1(2017/9/18)
 1、intercept the touch action of `content view` when `contentToggle` attribute's value is true.
 #### v1.2.0(2017/8/20)
@@ -112,4 +114,4 @@ compile 'com.justkiddingbaby:slidemenu:the latest version'
 ## License
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/License_icon-mit-88x31-2.svg/128px-License_icon-mit-88x31-2.svg.png)
 
-RollingLayout is available under the MIT license. See the [LICENSE](https://opensource.org/licenses/MIT) file for more info.
+This library is available under the MIT license. See the [LICENSE](https://opensource.org/licenses/MIT) file for more info.

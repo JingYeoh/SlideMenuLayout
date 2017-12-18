@@ -15,7 +15,7 @@
         app:contentAlpha="0.5"
         app:contentToggle="true"
         app:parallax="true"
-        app:slideMode="both">
+        app:slideMode="none">
 
         <include layout="@layout/content_menu_left"/>
 
