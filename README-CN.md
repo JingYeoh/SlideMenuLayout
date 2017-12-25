@@ -54,6 +54,7 @@ compile 'com.justkiddingbaby:slidemenu:最新版本'
 |[contentAlpha](/slidemenu/src/main/res/values/attrs.xml)|设置侧滑菜单打开时候ContentView的阴影透明度（范围0<alpha<=1.0），默认0.5f|float|
 |[contentShadowColor](/slidemenu/src/main/res/values/attrs.xml)|设置侧滑菜单打开时候ContentView的阴影颜色，默认色值#000000|color|
 |[contentToggle](/slidemenu/src/main/res/values/attrs.xml)|设置是否允许侧滑菜单打开时候点击ContentView关闭侧滑菜单，默认false|boolean|
+|[allowDragging](/slidemenu/src/main/res/values/attrs.xml)|设置是否允许拖动进行打开/关闭菜单的操作，默认true|boolean|
 
 ## 方法说明
 |返回值|方法|说明|
@@ -76,6 +77,8 @@ compile 'com.justkiddingbaby:slidemenu:最新版本'
 |void|[setContentAlpha(float contentAlpha)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|设置在侧滑菜单打开时候的ContentView的透明度，`该值为1.0时表示滑动过程中无阴影`|
 |void|[setContentShadowColor(int color)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|设置ContentView在滑动过程中的阴影颜色|
 |void|[setContentToggle(boolean contentToggle)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|设置ContentView是否在侧滑菜单打开时候点击关闭侧滑菜单.默认false|
+|void|[setAllowTogging(boolean allowTogging)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|设置是否允许拖动进行打开/关闭菜单的操作，默认true.|
+|void|[addOnSlideChangedListener(OnSlideChangedListener listener)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|设置侧滑菜单变化的监听器|
 
 ## 使用方式
 #### 布局中使用
@@ -96,6 +99,9 @@ compile 'com.justkiddingbaby:slidemenu:最新版本'
  要是slideMode为both时，则SlideMenuLayout必须要有三个子视图，否则会抛出异常。
  
 ## 发布历史
+#### v1.3.0(2017/12/25)
+1、添加特性:添加禁止拖动菜单（只能通过打开/关闭/切换方法打开）支持.   
+2、添加特性:添加菜单打开变化时候的监听器.
 #### v1.2.2(2017/12/18)
 1、修复[issue#5](https://github.com/JustKiddingBaby/SlideMenuLayout/issues/5)
 #### v1.2.1(2017/9/18)

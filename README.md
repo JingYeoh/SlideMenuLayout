@@ -55,6 +55,7 @@ compile 'com.justkiddingbaby:slidemenu:the latest version'
 |[contentAlpha](/slidemenu/src/main/res/values/attrs.xml)|the alpha of shadow for `ContentView` when menu is opened.（0<alpha<=1.0），default is 0.5f|float|
 |[contentShadowColor](/slidemenu/src/main/res/values/attrs.xml)|the color of shadow for `ContentView` when menu is sliding，default is `#000000`|color|
 |[contentToggle](/slidemenu/src/main/res/values/attrs.xml)|option to click on content view to close menu when it's opening，default is false|boolean|
+|[allowDragging](/slidemenu/src/main/res/values/attrs.xml)|option to enables or disables dragging for this view|boolean|
 
 ## Function instruction
 |return|function name|instruction|
@@ -77,6 +78,8 @@ compile 'com.justkiddingbaby:slidemenu:the latest version'
 |void|[setContentAlpha(float contentAlpha)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|set the alpha of shadow for `ContentView` when menu is opened.，`1.0f means the effect is not abled`|
 |void|[setContentShadowColor(int color)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|set the color of shadow for `ContentView` when menu is sliding,default is `#000000`|
 |void|[setContentToggle(boolean contentToggle)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|option to click on content view to close menu when it's opening.default is false|
+|void|[setAllowTogging(boolean allowTogging)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|set the option for whether to allow drag slidemenu to open/close slide menu.default is true.|
+|void|[addOnSlideChangedListener(OnSlideChangedListener listener)](/slidemenu/src/main/java/com/jkb/slidemenu/SlideMenuAction.java)|Register a callback to be invoked when this slide is changed.|
 
 ## Usage
 #### use in the layout
@@ -97,18 +100,21 @@ compile 'com.justkiddingbaby:slidemenu:the latest version'
  if slideMode is both then the SlideViewLayout must host three child views.
  
 ## Release history
+#### v1.3.0(2017/12/25)
+1、Add feature: Enables or disables dragging for this view.   
+2、Add feature: Add listener to register a callback to be invoked when this slide is changed.
 #### v1.2.2(2017/12/18)
 1、Fix [issue#5](https://github.com/JustKiddingBaby/SlideMenuLayout/issues/5)
 #### v1.2.1(2017/9/18)
-1、intercept the touch action of `content view` when `contentToggle` attribute's value is true.
+1、Intercept the touch action of `content view` when `contentToggle` attribute's value is true.
 #### v1.2.0(2017/8/20)
-1、add feature:Option to click on content view to close menu when it's opening.
-2、add feature:Option to dim the content view automatically.
-3、add feature:Option to toggle the parallax effect.
+1、Add feature: Option to click on content view to close menu when it's opening.
+2、Add feature: Option to dim the content view automatically.
+3、Add feature: Option to toggle the parallax effect.
 #### v1.0.1(2017/6/29)
-1、alter minSdkVersion to SDK 12.
+1、Update minSdkVersion to SDK 12.
 #### v1.0.0(2017/6/8)
-1、release SlideMenuLayout，Handle the sliding conflicts in each scenarios.  
+1、Release SlideMenuLayout，Handle the sliding conflicts in each scenarios.  
 2、Encapsulation demo.
 
 ## License

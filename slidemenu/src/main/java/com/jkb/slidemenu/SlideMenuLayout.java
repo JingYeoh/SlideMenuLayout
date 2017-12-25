@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Scroller;
-import java.io.BufferedReader;
 
 /**
  * 侧滑菜单布局
@@ -33,6 +32,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
   private float mContentAlpha;
   private int mContentShadowColor;
   private boolean mContentToggle;
+  private boolean mAllowDragging;
   //data
   private int screenWidth;
   private int screenHeight;
@@ -50,13 +50,14 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
   //ui
   private Paint mContentShadowPaint;
 
+  private OnSlideChangedListener mSlideChangedListener;
+
   public SlideMenuLayout(Context context) {
     this(context, null);
   }
 
   public SlideMenuLayout(Context context, AttributeSet attrs) {
     this(context, attrs, 0);
-
   }
 
   public SlideMenuLayout(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -111,6 +112,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     mContentShadowColor = ta.getColor(R.styleable.SlideMenuLayout_contentShadowColor,
         Color.parseColor("#000000"));
     mContentToggle = ta.getBoolean(R.styleable.SlideMenuLayout_contentToggle, false);
+    mAllowDragging = ta.getBoolean(R.styleable.SlideMenuLayout_allowDragging, true);
     ta.recycle();
   }
 
@@ -276,6 +278,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
 
   @Override
   public boolean onTouchEvent(MotionEvent event) {
+    if (!mAllowDragging) return false;
     int action = event.getAction();
     switch (action) {
       case MotionEvent.ACTION_DOWN:
@@ -520,6 +523,16 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     time = Math.abs(time);
     mScroller.startScroll(scrollX, 0, deltaX, destY, (int) time);
     invalidate();
+    //Update listener
+    if (mSlideChangedListener != null) {
+      if (destX == -mSlideWidth) {//左滑打开
+        mSlideChangedListener.onSlideChanged(this, true, false);
+      } else if (destX == 0) {//关闭侧滑
+        mSlideChangedListener.onSlideChanged(this, false, false);
+      } else if (destX == mSlideWidth) {//右滑打开
+        mSlideChangedListener.onSlideChanged(this, false, true);
+      }
+    }
   }
 
   /**
@@ -632,6 +645,11 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
   }
 
   @Override
+  public void setAllowTogging(boolean allowTogging) {
+    this.mAllowDragging = allowTogging;
+  }
+
+  @Override
   public View getSlideLeftView() {
     return mLeftView;
   }
@@ -700,5 +718,10 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
   @Override
   public boolean isRightSlideOpen() {
     return mTriggerSlideRight;
+  }
+
+  @Override
+  public void addOnSlideChangedListener(OnSlideChangedListener listener) {
+    mSlideChangedListener = listener;
   }
 }

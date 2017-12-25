@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--侧滑菜单的属性-->
-    <declare-styleable name="SlideMenuLayout">
-        <attr name="slideMode" format="enum">
-            <enum name="left" value="1001" />
-            <enum name="right" value="1002" />
-            <enum name="both" value="1003" />
-            <enum name="none" value="1004" />
-        </attr>
-        <attr name="slidePadding" format="dimension" />
-        <attr name="slideTime" format="integer" />
-        <attr name="parallax" format="boolean" />
-        <attr name="contentAlpha" format="float" />
-        <attr name="contentShadowColor" format="color" />
-        <attr name="contentToggle" format="boolean" />
-    </declare-styleable>
+  <!--侧滑菜单的属性-->
+  <declare-styleable name="SlideMenuLayout">
+    <attr format="enum" name="slideMode">
+      <enum name="left" value="1001"/>
+      <enum name="right" value="1002"/>
+      <enum name="both" value="1003"/>
+      <enum name="none" value="1004"/>
+    </attr>
+    <attr format="dimension" name="slidePadding"/>
+    <attr format="integer" name="slideTime"/>
+    <attr format="boolean" name="parallax"/>
+    <attr format="float" name="contentAlpha"/>
+    <attr format="color" name="contentShadowColor"/>
+    <attr format="boolean" name="contentToggle"/>
+    <attr format="boolean" name="allowDragging"/>
+  </declare-styleable>
 </resources>

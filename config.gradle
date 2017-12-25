@@ -11,8 +11,8 @@ ext {
     ]
 
     slidemenu = [
-            publishCode   : 5,
-            publishVersion: "1.2.2",
+            publishCode   : 6,
+            publishVersion: "1.3.0",
 
             userOrg       : 'jkb',
             groupId       : 'com.justkiddingbaby',
